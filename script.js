@@ -5,9 +5,6 @@ let load = 0;
 
 // this 30 is in milliseconds
 let int = setInterval(blurring, 30);
-const scale = (num, one, two) => {
-  return (num * one) / two;
-};
 
 const unblur = (startingBlur, num) => {
   return startingBlur - num;
@@ -23,5 +20,6 @@ function blurring() {
   loadText.innerText = `${load}%`;
   //this style opacity for the load percentage text in middle of screen will start at 1 then count down and the number will slowly disappear as it counts down to 0 opacity
   loadText.style.opacity = 1 - load / 100;
+  //this filter is for the blurring style and the unblur() function starts the blur at 100 which is super blurred and goes down as the loading is completed
   bg.style.filter = `blur(${unblur(100, load)}px)`;
 }
